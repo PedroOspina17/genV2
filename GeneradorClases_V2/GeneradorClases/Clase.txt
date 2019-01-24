@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Data;
+
+namespace <namespace>
+{
+	public class <class>{
+		
+		
+		<repeat><tipoDato> <atributo>;
+		</repeat>
+		<repeat>
+			public <tipoDato> a<Atributo>{
+				get{ return <atributo>;}
+				set{ <atributo> = value; }
+			}
+		</repeat>
+			
+		public static <class> obtenerDesdeDataSet(DataSet ds)
+        {
+            <class> obj = new <class>();
+            DataTable dt;
+            if (ds.Tables.Count > 0)
+            {
+                dt = ds.Tables[""];
+                if (dt != null)
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        <repeat>obj.<atributo> = dt.Columns.Contains("<atributo>") == true ? dr["<atributo>"].ToString() : null;
+						</repeat>
+                    }
+                }
+            }
+            return obj;
+        }
+	}
+}
